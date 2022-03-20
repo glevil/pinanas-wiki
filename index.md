@@ -1,37 +1,101 @@
-## Welcome to GitHub Pages
+# PiNanas
 
-You can use the [editor on GitHub](https://github.com/glevil/pinanas-wiki/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## I. Description
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+PiNanas is a personnal cloud server, media center and home-hosted set of services designed to run on a small computer like a Raspberry Pi.
 
-### Markdown
+Features include:
+- DHCP server **_(DHCPD)_**
+- reverse proxy **_(Traefik)_**
+- two-factor and SSO authentification server **_(Authelia)_**
+- network-wide software for blocking ads & tracking **_(AdGuard Home)_**
+- resource monitoring **_(Netstat)_**
+- application dashboard **_(Heimdall)_**
+- Personnal cloud server **_(Nextcloud)_**
+- Media-center **_(Jellyfin)_**
+- ...
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## II. Installation
 
-```markdown
-Syntax highlighted code block
+### Requirements
 
-# Header 1
-## Header 2
-### Header 3
+#### Hardware
 
-- Bulleted
-- List
+PiNanas will need a linux-based host, with:
 
-1. Numbered
-2. List
+- 10 GB free disk space
+- 4 GB RAM _(8 GD recommanded)_
+- An access to internet
+- Optionnaly: a GPU suited to your needs (video transcoding & playing)
 
-**Bold** and _Italic_ and `Code` text
+#### Software
 
-[Link](url) and ![Image](src)
+During installation or operation, PiNanas requires:
+
+- GNU utils
+- python3 and pip
+- docker and docker-compose
+- a wildcard (sub)domain name (e.g `*.home.example.com`)
+
+### Download
+
+#### Via git
+
+From your PiNanas host, anywhere:
+
+``` markdown
+
+git clone --depth 1 --branch develop https://github.com/yscialom/pinanas.git
+
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+#### Direct download
 
-### Jekyll Themes
+Go and download our [lastest release](https://www.pinanas.com). Unzip it anywhere
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/glevil/pinanas-wiki/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Settings
 
-### Support or Contact
+Create the installation directory for PiNanas, e.g. in /opt/pinanas and go there:
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+``` markdown
+
+sudo mkdir -p /opt/pinanas
+sudo chown [user]:[user_group] /opt/pinanas
+cd /opt/pinanas
+
+```
+Define your settings
+
+Fulfil the settings file from template
+If you need help, read the [settings man page]
+
+``` markdown
+
+cp /path/to/downloaded/pinanas/src/settings.yml.sample settings.yml
+chmod 600 settings.yml
+nano settings.yml
+
+```
+
+### Install
+
+From your installation directory, run the configuration script:
+
+``` markdown
+
+/path/to/downloaded/pinanas/src/configure.sh
+
+```
+
+Your installation is now complete.
+
+Any troubles ? Maybe read the [settings man page] and re-run the script.
+
+
+If you made important changes and want to regenerate PiNanas, run with `--force`.
+
+# III. Start
+
+Ready ?
+
+From your installation directory, run `docker-compose up -d`
