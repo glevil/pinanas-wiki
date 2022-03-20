@@ -67,7 +67,7 @@ cd /opt/pinanas
 Define your settings
 
 Fulfil the settings file from template
-If you need help, read the [settings man page]
+If you need help, read the [settings man page](https://glevil.github.io/pinanas-wiki/settings-help)
 
 ``` markdown
 
@@ -89,7 +89,7 @@ From your installation directory, run the configuration script:
 
 Your installation is now complete.
 
-Any troubles ? Maybe read the [settings man page] and re-run the script.
+Any troubles ? Maybe read the [settings man page](https://glevil.github.io/pinanas-wiki/settings-help) and re-run the script.
 
 
 If you made important changes and want to regenerate PiNanas, run with `--force`.
